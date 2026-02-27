@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> hexxymc YouTube</title>\
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+html {
+  scroll-behavior: smooth;
+}
+  body {
+    margin: 0;
+    font-family: VinerHandITC, cursive;
+    background: linear-gradient(135deg, #1e1e1e, #2d2d2d, #00ff88);
+    color: white;
+    text-align: center;
+  }
+  nav {
+    background-color: rgba(0,0,0,0.7);
+    padding: 15px;
+  }
+
+  nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 20px;
+    font-weight: bold;
+  }
+
+  nav a:hover {
+    color: #00ff88;
+  }
+
+  .hero {
+    padding: 80px 20px;
+  }
+
+  .hero h1 {
+    font-size: 50px;
+    margin-bottom: 10px;
+  }
+
+  .hero p {
+    font-size: 20px;
+    margin-bottom: 30px;
+  }
+
+  .hero-logo-subs {
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    gap: 30px; 
+    margin-bottom: 20px;
+}
+
+.sub-count-container h3 {
+    margin: 0;
+    font-size: 20px;
+    color: #00ff88;
+}
+
+.sub-count-container #sub-count {
+    display: block;
+    font-size: 36px;
+    font-weight: bold;
+    color: white;
+}
+
+  .btn {
+    background-color: #00ff88;
+    color: black;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    margin: 10px;
+    display: inline-block;
+  }
+
+  .btn:hover {
+    background-color: white;
+  }
+
+  .section {
+    padding: 60px 20px;
+  }
+
+  iframe {
+    margin-top: 20px;
+    border: none;
+    border-radius: 8px;
+  }
+
+  footer {
+    background-color: rgba(0,0,0,0.7);
+    padding: 20px;
+    margin-top: 40px;
+  } 
+  
+  .video-left{text-align: left;
+  padding-left:40px
+}
+
+.ripple {
+    position: absolute;       /* Position relative to page */
+    border-radius: 50%;       /* Circle shape */
+    background: rgba(0, 255, 136, 0.5); /* Water-green color */
+    width: 20px;
+    height: 20px;
+    transform: scale(0);      /* Start small */
+    pointer-events: none;     /* So clicks pass through */
+    animation: ripple-animation 0.6s ease-out;
+    z-index: 9999;            /* Appear on top of everything */
+}
+
+@keyframes ripple-animation {
+    to {
+        transform: scale(20); /* Circle grows outward */
+        opacity: 0;           /* Fades out */
+    }
+}
+
+</style>
+</head>
+
+<body>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#videos">Videos</a>
+        </nav>
+
+        <div class="hero">
+        <h1>Welcome to @hexxymc's Website!</h1>
+        <p>I Create Gaming Videos that Entertain You</p>
+</div> 
+
+<div class="hero-logo-subs">
+        <p> <img src="YTchannelLOGO.png" alt="MY CHANNEL" width="300" height="300"> </p>
+    <div class="sub-count-container">
+        <h3>Live SUBSCRIBER Count</h3>
+        <span id="sub-count">0</span>
+    </div>
+</div> 
+    
+<a href="https://youtube.com/@hexxymc?si=y92SyhDnL_LqHf88" class="btn" target="_blank">SUBSCRIBE</a>
+
+<div class="hero">
+  <p>🔥Latest Video🔥</p>
+          <iframe src="https://www.youtube.com/embed/VP7VZi6MA1Q?autoplay=1&mute=1" width="960" height="540" 
+title="YouTube Video Player"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+frameborder="0"
+allowfullscreen>
+</iframe>
+</div>
+
+<div class="section" id="about">
+        <h2>About Me</h2>
+        <p> Hi, I am Aarabh. A content creator on YouTube hoping for his next video to go viral.<br> Basically, I make gaming videos that are entertaining and informative.<br> My goal is to bring joy to my viewers through my content. I hope you subscribe to my channel and enjoy the videos while joining the community!<br><strong>AKA Discord Server:JUST BELOW</strong></p>
+    </div>
+    <a href="https://discord.gg/pxznfbJ5un" target="_blank" class="btn">JOIN DISCORD SERVER</a>
+    <a href="https://www.twitch.tv/hex3212_"
+target="_blank" class="btn">FOLLOW ON TWITCH</a>
+
+<div class="section" id="videos">
+  <h2>Some of My Videos</h2>
+  <div class="video-grid">
+    <iframe src="https://www.youtube.com/embed/0e-hx1Apmc4"></iframe>
+    <iframe src="https://www.youtube.com/embed/MARctRmWS6A"></iframe>
+    <iframe src="https://www.youtube.com/embed/d-Szo05UZBw"></iframe>
+    <iframe src="https://www.youtube.com/embed/cC9lzfxx50s"></iframe>
+    <iframe src="https://www.youtube.com/embed/mKBTASW6JVU"></iframe>
+  </div>
+</div>
+
+    <footer>
+        © 2025 BlitzPrizm  | All Rights Reserved
+    </footer>
+
+    <script> console.log("Welcome to hexxymc's website!");
+const API_KEY = "AIzaSyD9ztO387-V7s8hWCLqotyPcnSKoAlok9Q"; 
+const CHANNEL_ID = "UC5Pz1RiCtEmab2tNAFXnZyA"; 
+const subCountEl = document.getElementById("sub-count");
+
+async function updateSubscribers() {
+    try {
+        const response = await fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${CHANNEL_ID}&key=${API_KEY}`);
+        const data = await response.json();
+        console.log(data);
+        const subs = data.items[0].statistics.subscriberCount;
+        subCountEl.innerText = subs;
+    } catch (err) {
+        console.error("Error fetching subscriber count:", err);
+    }
+}
+
+// Update every 10 seconds
+updateSubscribers();
+setInterval(updateSubscribers, 10000);
+</script> </script>
+
+<script>
+document.addEventListener("click", function(e) {
+    const circle = document.createElement("div");
+    circle.classList.add("ripple");
+
+    // Position the circle where the click happened
+    circle.style.left = e.clientX + "px";
+    circle.style.top = e.clientY + "px";
+
+    document.body.appendChild(circle);
+
+    // Remove the circle after the animation ends
+    circle.addEventListener("animationend", () => {
+        circle.remove();
+    });
+});
+</script>
+
+</body>
+</html>
+    
+
